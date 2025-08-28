@@ -161,13 +161,13 @@ sensor:
     lambda: |-
       uint8_t* pdata = (uint8_t*) x.data();
        if (pdata[3] == 0x0F) 
-        {float sys =  (pdata[6]);
-        float dia =  (pdata[8]);
-        float x9 =  (pdata[9]);
-        float x10 =  (pdata[10]);
-        float x11 =  (pdata[11]);
-        float pulse =  (pdata[12]);
-        float usr =  (pdata[13]);
+        {uint sys =  (pdata[6]);
+        uint dia =  (pdata[8]);
+        uint x9 =  (pdata[9]);
+        uint x10 =  (pdata[10]);
+        uint x11 =  (pdata[11]);
+        uint pulse =  (pdata[12]);
+        uint usr =  (pdata[13]);
         id(systolic).publish_state(sys);
         id(diastolic).publish_state(dia);
         id(b9).publish_state(x9);
@@ -176,7 +176,7 @@ sensor:
         id(heartrate).publish_state(pulse);
         id(user).publish_state(usr);}
        else if(pdata[3] == 0x0c)
-        {float err =  (pdata[13]);
+        {uint err =  (pdata[13]);
         id(error).publish_state(err);}
       return (float)x.size();
 
